@@ -5,6 +5,8 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 const routes = require('./controllers'); 
+const d3 = require('d3'); 
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
