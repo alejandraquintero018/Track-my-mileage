@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS runForFun_db;
+CREATE DATABASE runForFun_db;
