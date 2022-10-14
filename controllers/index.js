@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const apiRoutes = require('./api')
 
 // START ONLY FOR TESTING
 const { User } = require('../models')

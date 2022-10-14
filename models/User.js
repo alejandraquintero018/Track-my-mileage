@@ -22,22 +22,29 @@ User.init(
       validate: {
         len: [4]
       }
-    }
-    //maybe include email
-    //maybe include location
-  },
-  {
-    hooks: {
-      // set up beforeCreate lifecycle "hook" functionality
-      beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-      beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
-      }
     },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: True,
+      //maybe include email
+      //maybe include location
+    },
+    race: {
+      type: DataTypes.STRING,
+      allowNull: True,
+    }, 
+  
+    // hooks: {
+    //   // set up beforeCreate lifecycle "hook" functionality
+    //   beforeCreate: async (newUserData) => {
+    //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
+    //     return newUserData;
+    //   },
+    //   beforeUpdate: async (updatedUserData) => {
+    //     updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+    //     return updatedUserData;
+    //   }
+    // },
     sequelize,
   }
 );
