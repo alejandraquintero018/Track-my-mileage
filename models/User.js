@@ -26,6 +26,8 @@ User.init(
     //maybe include email
     //maybe include location
   },
+
+  //maybe include location
   {
     hooks: {
       // set up beforeCreate lifecycle "hook" functionality
