@@ -1,11 +1,10 @@
 require('dotenv').config()
 const path = require('path');
+const routes = require('./controllers'); 
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
-const routes = require('./controllers'); 
-const d3 = require('d3'); 
 
 
 const app = express();
@@ -42,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-app.use(require('./controllers/'));
+app.use(require('./controllers'));
 
 
 app.listen(PORT, () => {
