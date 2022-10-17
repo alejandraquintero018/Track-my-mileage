@@ -30,6 +30,8 @@ Run.init(
                 key: 'username',
             },
         },
+    },
+    {
         sequelize
     }
 ); 
