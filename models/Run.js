@@ -20,8 +20,7 @@ Run.init(
         },
         duration: {
             //for number of minutes user ran
-            type: DataTypes.DATE,
-            type: DataTypes.DATE
+            type: DataTypes.INTEGER
         },
     },
     {
