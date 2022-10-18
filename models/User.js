@@ -39,19 +39,22 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    // hooks: {
-    //   // set up beforeCreate lifecycle "hook" functionality
-    //   beforeCreate: async (newUserData) => {
-    //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
-    //     return newUserData;
-    //   },
-    //   beforeUpdate: async (updatedUserData) => {
-    //     updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-    //     return updatedUserData;
-    //   }
-   //},
-    sequelize,
+    //   hooks: {
+    //     // set up beforeCreate lifecycle "hook" functionality
+    //     beforeCreate: async (newUserData) => {
+    //       newUserData.password = await bcrypt.hash(newUserData.password, 10);
+    //       return newUserData;
+    //     },
+    //     beforeUpdate: async (updatedUserData) => {
+    //       updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+    //       return updatedUserData;
+    //     }
+    // },
+  },
+  {
+    sequelize
   }
+
 );
 
 module.exports = User;
