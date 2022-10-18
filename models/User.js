@@ -50,8 +50,13 @@ User.init(
     //     return updatedUserData;
     //   }
    //},
-    sequelize,
+  
+  },
+  {
+    sequelize
   }
+  
+  
 );
 
 module.exports = User;
