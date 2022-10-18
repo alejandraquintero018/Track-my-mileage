@@ -6,7 +6,7 @@ const { Run, User } = require('../models');
 router.get('/', async (req, res) => {
     console.log('homeroutes present'); 
     const runData = await Run.findAll({ 
-        include: [{ model: User }], 
+        include: [{ model: User }],  
     })
     res.render('homepage');
 }); 
