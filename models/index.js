@@ -1,13 +1,8 @@
 const User = require('./User');
 const Run = require('./Run');
 
-User.hasMany(Run, {
-    // foreignKey: 'user_id', 
-    // onDelete: 'CASCADE'
-});
+User.hasMany(Run);
 
-Run.belongsTo(User, {
-    // foreignKey: 'user_id',
-})
+Run.belongsTo(User);
 
 module.exports = { User, Run };
