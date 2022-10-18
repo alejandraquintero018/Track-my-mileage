@@ -20,20 +20,12 @@ Run.init(
         },
         duration: {
             //for number of minutes user ran
-            type: DataTypes.DATE, 
-            type: DataTypes.DATE
-        },
-        user_username: {
-            type: DataTypes.SRING,
-            references: {
-                model: 'user',
-                key: 'username',
-            },
+            type: DataTypes.INTEGER
         },
     },
     {
         sequelize
-    }
-); 
+    },
+);
 
 module.exports = Run; 
