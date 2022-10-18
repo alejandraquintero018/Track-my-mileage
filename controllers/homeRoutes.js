@@ -5,7 +5,6 @@ const { Run, User } = require('../models');
 
 router.get('/', async (req, res) => {
     console.log('homeroutes present'); 
-   
 
     try {
         const runData = await Run.findAll({ 
