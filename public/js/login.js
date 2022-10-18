@@ -37,5 +37,8 @@ const signupFormHandler = async (event) => {
             alert('Failed to sign up.');
         }
     };
-}
+};
+
+document.querySelector('.login-form').addEventListener('submit', newFormHandler);
+document.querySelector('.signup-form').addEventListener('submit', newFormHandler);
 
