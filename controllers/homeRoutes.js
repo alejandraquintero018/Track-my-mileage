@@ -1,35 +1,47 @@
-const router = require('express').Router(); 
-const { Run, User } = require('../models'); 
-//const withAuth = require('../utils/auth'); 
+const router = require('express').Router();
+const { Run, User } = require('../models');
+const withAuth = require('../utils/auth');
 
 
 router.get('/', async (req, res) => {
-    console.log('homeroutes present'); 
+    console.log('homeroutes present');
 
     try {
-        const runData = await Run.findAll({ 
-            include: [{ model: User }], 
+        const runData = await Run.findAll({
+            include: [{ model: User }],
+
         });
 
         const runs = runData.map(run => {
-            return run.get({plain: true})
+            return run.get({ plain: true })
         });
 
         console.log(runs)
-
-        res.render('home', {runs});
+        res.render('home', { runs });
     } catch (error) {
         res.status(500).end()
     }
-}); 
+});
 
 router.get('/login', async (req, res) => {
     res.render('login')
 });
 
 router.get('/profile', async (req, res) => {
-    res.render('profile')
+    try {
+        const runData = await Run.findAll({
+            include: [{ model: User }]
+        });
+
+        const runs = runData.map(run => {
+            return run.get({ plain: true })
+        });
+        console.log(runs)
+        res.render('profile');
+    } catch (error) {
+        res.status(500).end()
+    }
 })
 
-module.exports = router; 
+module.exports = router;
 

@@ -2,15 +2,15 @@ const router = require('express').Router();
 const { Run } = require('../../models'); 
 
 router.post('/', async (req, res) => {
-    console.log('userRoutes present'); 
+    console.log('runRoutes present'); 
     try {
-        //const userData = await User.create(req.body); 
-        res.status(200)
+        const newRun = await Run.create({...req.body, UserId:req.session.UserId}); 
+        res.status(200).json(newRun);
     } catch (err) {
         console.log(err); 
         res.status(400).json(err);  
     }
     
-})
+});
 
 module.exports = router; 
