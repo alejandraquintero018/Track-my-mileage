@@ -1,19 +1,32 @@
-const { response } = require("express");
-
 const newFormHandler = async (event) => {
     event.preventDefault();
 
     const distance = document.querySelector('#run-distance').value.trim();
-    const time = document.querySelector('#run-time').value.trim();
-    const note = document.querySelector('#run-note').value.trim();
-
-    if (distance && time) { 
+    const duration = document.querySelector('#run-time').value.trim();
+    const notes = document.querySelector('#run-note').value.trim();
+console.log(distance);
+    if (distance && duration && !notes) { 
         const runs = await fetch('/api/run', { 
             method: 'POST', 
-            body: JSON.stringify({ distance, time })
+            body: JSON.stringify({ distance, duration }),
+            headers: { 'Content-Type': 'application/json'},
         }); 
 
-        if (response.ok) { 
+        if (runs.ok) { 
+            document.location.replace('/profile'); 
+        } else {
+            alert ('Your run wasnt logged')
+        }
+    }
+
+    if(distance && duration && notes) { 
+        const runs = await fetch('/api/run', { 
+            method: 'POST', 
+            body: JSON.stringify({ distance, duration, notes }), 
+            headers: { 'Content-Type': 'application/json'},
+        }); 
+        
+        if (runs.ok) { 
             document.location.replace('/profile'); 
         } else {
             alert ('Your run wasnt logged')
@@ -24,4 +37,3 @@ const newFormHandler = async (event) => {
 document.querySelector('.run-form').addEventListener('submit', newFormHandler);
   
 
-const getData = async ( )
