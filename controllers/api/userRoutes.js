@@ -6,7 +6,8 @@ router.post('/', async (req, res) => {
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {
-            req.session.user_id = userData.id;
+            //is the Id being called properly?
+            req.session.Users_id = userData.id;
             req.session.logged_in = true;
 
         res.status(200).json(userData);
@@ -18,6 +19,7 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+ console.log('router present');
     try {
         const userData = await User.findOne({ where: { email: req.body.email } });
 
@@ -38,7 +40,8 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.UserId = userData.id;
+            //is the User id correct? 
+            req.session.Users_id = userData.id;
             req.session.logged_in = true;
 
             res.json({ user: userData, message: 'Welcome Back' });
@@ -46,6 +49,7 @@ router.post('/login', async (req, res) => {
 
     } catch (err) {
         res.status(400).json(err);
+        console.log(err); 
     }
 });
 
