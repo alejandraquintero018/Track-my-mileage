@@ -1,13 +1,23 @@
-  <section class="container ">
-        <div class="d-flex justify-content-center">
-            <div class="p-5 text-center bg-dark text-light col-6">
-                <h3>{{username}}</h3>
-                <div>{{location}}</div>
-                <div>{{time}}</div>
-                <div>{{distance}}</div>
-                <div>{{description}}</div>
-            </div>
+<section class="container col-3 ">
+    <div class="d-flex flex-column-reverse bg-dark justify-content-center">
+        {{#each runs}}
+        
+            <div class="  m-5 p-5 text-center bg-light text-dark ">
+        
+                <h3>{{User.username}}</h3>
+                <hr>
+                {{!-- <div>{{location}}</div> --}}
+                <div>{{distance}} mi</div>
+                <div>{{duration}} min</div>
+                
+                <div>{{notes}}</div>
             
-        </div>
+            </div>
+        
 
-        <hr>
+        {{/each}}
+        <br>
+    </div>
+
+    
+</section>
