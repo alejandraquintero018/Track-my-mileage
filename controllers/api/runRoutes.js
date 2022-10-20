@@ -4,7 +4,10 @@ const { Run } = require('../../models');
 router.post('/', async (req, res) => {
     console.log('runRoutes present'); 
     try {
-        const newRun = await Run.create({...req.body, UserId:req.session.UserId}); 
+        const newRun = await Run.create({
+            ...req.body, 
+            Users_id:req.session.Users_id
+        }); 
         res.status(200).json(newRun);
     } catch (err) {
         console.log(err); 
