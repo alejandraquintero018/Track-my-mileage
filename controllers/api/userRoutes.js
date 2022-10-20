@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
         const userData = await User.create(req.body);
         req.session.save(() => {
             //is the Id being called properly?
-            req.session.Users_id = userData.id;
+            req.session.user_id = userData.id;
             req.session.logged_in = true;
 
         res.status(200).json(userData);
@@ -30,19 +30,16 @@ router.post('/login', async (req, res) => {
                 .json({ message: 'Incorrect email or password' });
             return;
         }
-
         const validPassword = await userData.checkPassword(req.body.password);
-
         if (!validPassword) {
             res
                 .status(400)
                 .json({ message: 'Incorrect email or password' });
             return;
         }
-
         req.session.save(() => {
             //is the User id correct? 
-            req.session.Users_id= userData.id;
+            req.session.user_id= userData.id;
             req.session.logged_in = true;
 
             res.json({ user: userData, message: 'Welcome Back' });

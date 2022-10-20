@@ -35,14 +35,16 @@
 
     <div class="containter"></div>
     <script>
+
         const ctx = document.getElementById('running-chart').getContext('2d');
+
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: [{{ run.date_created }}],
+                labels: [{{#each dates as |date|}}"{{format_date date}}",{{/each}}],
                 datasets: [{
                     label: 'Your Running Progress ',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: [{{ distance }}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

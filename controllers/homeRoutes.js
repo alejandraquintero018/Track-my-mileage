@@ -36,22 +36,36 @@ router.get('/login', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
     console.log('here');
     try {
-        const runData = await Run.findByPk(
-            req.params.id,
-            {
-                include: [{ model: Run }]
-            });
+        const userData = await User.findByPk(
+            req.session.user_id)
+        const user = userData.get({ plain: true });
 
-        // const runs = runData.map(run => {
-        //     return run.get({ plain: true })
-        // });
-        //console.log(runs)
-        res.render('profile');
+        const runData = await Run.findAll({
+            where: { user_id: req.session.user_id, },
+        },
+            {
+                include: [{ model: User }]
+            });
+        const runs = runData.map(run => {
+            return run.get({ plain: true })
+        });
+        console.log(runs)
+        const dates = [];
+        const distance = []; 
+        runs.forEach(run => {
+            dates.push(run.createdAt);
+            distance.push(run.distance);
+        });
+        console.table({dates, distance}); 
+        res.render('profile',
+            {
+                runs, user, dates, distance
+            });
     } catch (error) {
         res.status(500).end()
         console.log(error);
     }
-})
+});
 
 module.exports = router;
 
