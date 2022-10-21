@@ -10,9 +10,7 @@ router.get('/', async (req, res) => {
             include: [{ model: User }],
         });
 
-        const runs = runData.map(run => {
-            return run.get({ plain: true })
-        });
+        const runs = runData.map(run =>  run.get({ plain: true }));
 
         console.log(runs)
         res.render('home',
@@ -21,7 +19,7 @@ router.get('/', async (req, res) => {
                 logged_in: req.session.logged_in,
             });
     } catch (error) {
-        res.status(500).end()
+        res.status(500).json(error.message)
     }
 });
 
@@ -34,7 +32,7 @@ router.get('/login', async (req, res) => {
 });
 
 router.get('/profile', withAuth, async (req, res) => {
-    console.log('here');
+    console.log('Here');
     try {
         const userData = await User.findByPk(
             req.session.user_id)
