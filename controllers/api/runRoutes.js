@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
         const newRun = await Run.create({
             ...req.body, 
 
-            UserId:req.session.Users_id
+            user_id:req.session.user_id
 
         }); 
         res.status(200).json(newRun);
