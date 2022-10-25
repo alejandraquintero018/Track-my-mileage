@@ -1,24 +1,18 @@
-<section class="container col-3 ">
-    <div class="d-flex flex-column-reverse bg-dark justify-content-center">
-        {{#each runs}}
-        
-            <div class="  m-5 p-5 text-center bg-light text-dark ">
-        
-                <h3>{{User.username}}</h3>
-                <div> {{date_created}} </div>
-                <hr>
-                {{!-- <div>{{location}}</div> --}}
-                <div>{{distance}} mi</div>
-                <div>{{duration}} min</div>
-                
-                <div>{{notes}}</div>
-            
-            </div>
-        
-
-        {{/each}}
-        <br>
+<section class="container col-8">
+   
+    {{#each runs}}
+    <div class="card text-bg-dark gradient mb-3 " style="w-80">
+        <div class="card-header">
+            <h4>{{User.username}} </h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{format_date date_created}}</h6>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{distance}} mi</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{duration}} min</h6>
+            <p class="card-text">{{notes}}</p>
+        </div>
+       
     </div>
+ {{/each}}
 
-    
 </section>
